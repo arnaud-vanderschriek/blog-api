@@ -1,5 +1,4 @@
 import User from "../models/User.js";
-import Login from "../models/Login.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -7,6 +6,7 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
+
     if (!user)
       return res.status(401).json({
         success: false,
